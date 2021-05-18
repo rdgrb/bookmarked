@@ -1,12 +1,13 @@
-import { BottomNav } from 'components/BottomNav';
+import { SearchForm } from 'components/SearchForm';
 
-import styles from 'styles/Home.module.scss'
+import styles from 'styles/Home.module.scss';
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <h1>Olá, mundo! 😅</h1>
-      <BottomNav />
+    <div className={styles.homeContainer}>
+      <img src="logo.svg" alt="Logo do Bookmarked" />
+
+      <SearchForm />
     </div>
   )
 }
