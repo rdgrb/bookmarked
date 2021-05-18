@@ -1,0 +1,16 @@
+.bottomNavContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 8vh;
+
+    border-top: 1px solid var(--light-gray);
+    background-color: var(--background);
+
+    a {
+        text-transform: uppercase;
+        text-decoration: none;
+        color: var(--text);
+    }
+}
