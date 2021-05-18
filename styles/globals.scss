@@ -1,0 +1,22 @@
+:root {
+  --primary: #0074E3;
+
+  --gray: #838383;
+  --light-gray: #202020;
+  --dark-gray: #585858;
+
+  --text: #FFF;
+  --subtext: #838383;
+
+  --background: #141414;
+  --background-gradient: rgb(20, 20, 20, 0.9);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Rubik, sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
