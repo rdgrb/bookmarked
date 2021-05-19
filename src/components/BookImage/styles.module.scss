@@ -1,0 +1,17 @@
+.emptyBookCover {
+    width: 230px;
+    height: 280px;
+
+    background: var(--light-gray);
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 1.2rem;
+
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--gray);
+}
