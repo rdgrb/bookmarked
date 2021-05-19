@@ -1,0 +1,58 @@
+.bookAreaContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 30vw;
+    height: 92vh;
+
+    border-right: 1px solid var(--light-gray);
+    background: url("../../../public/book-bg-50.png");
+}
+
+.emptyBook {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 250px;
+    height: 300px;
+
+    border: 3px dashed var(--gray);
+    border-radius: 5px;
+
+    padding: 2rem;
+
+    background: var(--background);
+
+    span {
+        color: var(--gray);
+        text-transform: uppercase;
+        text-align: center;
+    }
+}
+
+.bookInfoContainer {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0rem 3rem;
+
+    p {
+        text-align: justify;
+    }
+
+    h1 {
+        margin-bottom: 0;
+    }
+
+    h2 {
+        margin: 0;
+        color: var(--gray);
+    }
+}
