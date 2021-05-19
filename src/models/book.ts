@@ -3,5 +3,6 @@ export interface Book {
     title: string;
     subtitle: string;
     authors: Array<any>;
-    description: any;
+    description: string;
+    cover: string;
 }
