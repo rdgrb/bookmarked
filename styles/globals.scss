@@ -30,3 +30,37 @@ body {
 button {
   cursor: pointer;
 }
+
+.primaryButton {
+  text-transform: uppercase;
+  color: var(--text);
+
+  background: var(--primary);
+
+  border: 0;
+  border-radius: 5px; 
+
+  padding: 1rem 2.5rem;
+
+  transition: filter 0.5s;
+
+  &:hover {
+    filter: brightness(0.6)
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light-gray); 
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--dark-gray); 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray); 
+}
