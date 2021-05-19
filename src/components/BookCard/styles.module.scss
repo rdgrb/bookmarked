@@ -1,0 +1,31 @@
+.bookCardContainer {
+    margin: 1rem 0.5rem 0rem 0rem;
+    cursor: pointer;
+
+    h3, h4 {
+        font-weight: 500;
+    }
+
+    h3 {
+        margin-bottom: 0;
+    }
+
+    h4 {
+        color: var(--gray);
+        margin: 0;
+    }
+}
+
+.emptyBookCover {
+    width: 230px;
+    height: 280px;
+
+    background: var(--light-gray);
+    border-radius: 5px;
+}
+
+@media(min-width: 992px) {
+    .bookCardContainer {
+        flex: 1 0 21%;
+    }
+}
