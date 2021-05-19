@@ -5,15 +5,38 @@ import { BookContext } from 'src/contexts/BookContext';
 
 import styles from "./styles.module.scss";
 
-export default function BookCard() {
+interface Book {
+    id: string;
+    title: string;
+    subtitle: string;
+    description: string;
+}
+
+export default function BookCard({
+    id,
+    title,
+    subtitle,
+    description,
+    cover,
+}) {
     const { setBook } = useContext(BookContext);
 
-    return (
-        <div className={styles.bookCardContainer} onClick={() => { setBook("any") }}>
-            <BookImage />
+    function handleCardClick() {
+        setBook({
+            id: id,
+            title: title,
+            subtitle: subtitle,
+            description: description,
+            cover: cover,
+        })
+    }
 
-            <h3>Título</h3>
-            <h4>Subtitulo</h4>
+    return (
+        <div className={styles.bookCardContainer} onClick={handleCardClick}>
+            <BookImage uri={cover} />
+
+            <h4>{ title }</h4>
+            <h5>{ subtitle }</h5>
         </div>
     )
 }

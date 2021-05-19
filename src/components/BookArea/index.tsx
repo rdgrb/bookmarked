@@ -1,13 +1,18 @@
-import React, { useContext } from 'react'
-import Link from "next/link";
+import React, { useContext, useEffect } from 'react'
+import Router from "next/router";
 
 import { BookImage } from 'components/BookImage';
 import { BookContext } from 'src/contexts/BookContext';
 
 import styles from "./styles.module.scss";
+import { Button } from 'components/Button';
 
 export default function BookArea() {
     const { showBookCover, selectedBook } = useContext(BookContext);
+
+    function redirectToBookPage() {
+        Router.push(`/book/${ selectedBook.id }`)
+    }
 
     return (
         <div className={styles.bookAreaContainer}>
@@ -19,28 +24,30 @@ export default function BookArea() {
 
             {selectedBook && !showBookCover && (
                 <div className={styles.bookInfoContainer}>
-                    <BookImage />
-                    <h1>Título</h1>
-                    <h2>Subtitulo</h2>
+                    <BookImage uri={selectedBook.cover} />
+                    <h3>{ selectedBook.title }</h3>
+                    <h4>{ selectedBook.subtitle }</h4>
 
                     <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-                        Omnis dignissimos architecto perferendis pariatur a rerum 
-                        ullam labore doloribus laborum, dicta, tempora blanditiis 
-                        voluptate laboriosam consectetur voluptatem quod atque 
-                        nisi ut temporibus error, excepturi id dolores officia.
-                        Amet, omnis quo deleniti id, ipsum accusamus repellat 
-                        quasi et placeat tenetur voluptates ut.
+                        { selectedBook.description }
                     </p>
 
-                    <Link href="/book/title">
+                    {/* <Link href={`/book/${ selectedBook.id }`}>
                         <button className="primaryButton">Ver mais detalhes</button>
-                    </Link>
+                    </Link> */}
+
+                    <Button 
+                        primaryAction={redirectToBookPage}
+                    />
                 </div>
             )}
 
             {showBookCover && (
-                <h1>Cover</h1>
+                <div className={styles.bookCoverContainer}>
+                    <BookImage uri={selectedBook.cover} />
+    
+                    <button className="primaryButton">Adicionar aos favoritos</button>
+                </div>
             )}
         </div>
     )
