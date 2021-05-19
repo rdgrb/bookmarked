@@ -1,11 +1,15 @@
+import React, { useContext } from 'react'
+
 import { BookImage } from 'components/BookImage';
-import React from 'react'
+import { BookContext } from 'src/contexts/BookContext';
 
 import styles from "./styles.module.scss";
 
 export default function BookCard() {
+    const { setBook } = useContext(BookContext);
+
     return (
-        <div className={styles.bookCardContainer}>
+        <div className={styles.bookCardContainer} onClick={() => { setBook("any") }}>
             <BookImage />
 
             <h3>Título</h3>
