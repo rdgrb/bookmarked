@@ -1,0 +1,82 @@
+.bookContainer {
+    padding: 1rem 2.5rem;
+
+    h1 {
+        margin-bottom: 0;
+    }
+
+    h2 {
+        margin: 0;
+        color: var(--gray);
+        font-weight: normal;
+    }
+
+    p {
+        text-align: justify;
+    }
+}
+
+.bookInfoContainer {
+    display: block;
+    margin: 1.3rem 0rem;
+
+    div {
+        background-color: var(--light-gray);
+        padding: 1.5rem;
+
+        margin-bottom: 0.4rem;
+
+        border-radius: 5px;
+    }
+
+    h3 {
+        margin: 0;
+        color: var(--gray);
+        font-weight: normal;
+    }
+}
+
+@media (min-width: 992px) {
+    .bookContainer {
+        padding: 5rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        height: 92vh;
+
+        h1 {
+            font-size: 2.25rem;
+        }
+
+        h2 {
+            font-size: 1.875rem;
+        }
+    }
+
+    .bookInfoContainer {
+        display: flex;
+
+        div {
+            width: 100%;
+            margin-right: 0.8rem;
+
+            &:last-child {
+                margin-right: 0rem;
+            }
+        }
+
+        h3 {
+            font-size: 1.25rem;
+        }
+
+        span {
+            font-size: 1.125rem;
+        }
+    }
+
+    .imageContainer {
+        display: none;
+    }
+}
