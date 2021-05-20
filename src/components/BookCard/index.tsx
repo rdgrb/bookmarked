@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 
 import { Book } from "../../models/book";
 import { BookImage } from 'components/BookImage';

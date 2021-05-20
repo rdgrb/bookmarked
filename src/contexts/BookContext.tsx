@@ -82,8 +82,6 @@ export function BookProvider({ children }) {
     function isBookInFavoriteList(bookID: string): boolean {
         let inFavorite: boolean = false;
 
-        console.log("ID do livro: ", bookID);
-
         for (let i = 0; i < favoritesBook.length; i++) {
             if (favoritesBook[i].id === bookID) {
                 inFavorite = true;
