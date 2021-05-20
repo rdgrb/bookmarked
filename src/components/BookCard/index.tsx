@@ -1,48 +1,35 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 
+import { Book } from "../../models/book";
 import { BookImage } from 'components/BookImage';
 import { BookContext } from 'src/contexts/BookContext';
 
 import styles from "./styles.module.scss";
 import Router from 'next/router';
 
-interface Book {
-    id: string;
-    title: string;
-    subtitle: string;
-    description: string;
-    cover: string;
+interface Props {
+    book: Book,
     redirectDirectly?: boolean;
 }
 
 export default function BookCard({
-    id,
-    title,
-    subtitle,
-    description,
-    cover,
+    book,
     redirectDirectly = false,
-}: Book) {
+}: Props) {
     const { setBook } = useContext(BookContext);
 
     function handleCardClick() {
-        setBook({
-            id: id,
-            title: title,
-            subtitle: subtitle,
-            description: description,
-            cover: cover,
-        })
+        setBook(book);
 
-        redirectDirectly ? Router.push(`/book/${id}`) : undefined;
+        redirectDirectly ? Router.push(`/book/${ book.id }`) : undefined;
     }
 
     return (
         <div className={styles.bookCardContainer} onClick={handleCardClick}>
-            <BookImage uri={cover} />
+            <BookImage uri={ book.cover } />
 
-            <h4>{ title }</h4>
-            <h5>{ subtitle }</h5>
+            <h4>{ book.title }</h4>
+            <h5>{ book.subtitle }</h5>
         </div>
     )
 }

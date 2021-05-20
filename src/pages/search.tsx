@@ -47,14 +47,11 @@ export default function Search({
             </div>
 
             <div className={styles.bookListContainer}>
-                {books.map(book => (
-                    <BookCard redirectDirectly={window.innerWidth < 992 ? true : false}
+                {books.map((book: Book) => (
+                    <BookCard 
                         key={book.id}
-                        id={book.id}
-                        title={book.title}
-                        subtitle={book.subtitle}
-                        description={book.description}
-                        cover={book.cover}
+                        book={book}
+                        redirectDirectly={window.innerWidth < 992 ? true : false}
                     />
                 ))}
             </div>
@@ -74,9 +71,9 @@ Search.getInitialProps = async(ctx: NextPageContext) => {
     const { data } = await api.get("volumes", {
         params: {
             q: q,
-            startIndex: Math.floor((page * 8) - 8),
+            startIndex: Math.floor((parseInt(page) * 8) - 8),
             maxResults: 8,
-            langRestrict: "BR"
+            orderBy: "relevance",
         }
     });
 

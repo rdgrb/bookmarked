@@ -15,13 +15,9 @@ export function BookFavorites() {
             <div className={styles.bookFavoritesList}>
                 {favoritesBook && favoritesBook.map(book => (
                     <BookCard 
-                        redirectDirectly
                         key={book.id}
-                        id={book.id}
-                        title={book.title}
-                        subtitle={book.subtitle}
-                        cover={book.cover}
-                        description={""}
+                        book={book}
+                        redirectDirectly
                     />
                 ))}
             </div>
