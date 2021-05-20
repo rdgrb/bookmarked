@@ -11,8 +11,8 @@ interface BookContextValues {
     setShowCover: (show: boolean) => void;
     favoritesBook: any;
     bookRetrieved: any;
-    addFavoriteBook: (book: any) => void;
-    removeFavoriteBook: (book: any) => void;
+    addFavoriteBook: (book: FavoriteBook) => void;
+    removeFavoriteBook: (book: FavoriteBook) => void;
     isBookInFavoriteList: (bookID: string) => boolean;
 }
 
@@ -65,16 +65,24 @@ export function BookProvider({ children }) {
 
     function removeFavoriteBook(book: FavoriteBook): void {
         const cookie = Cookie.get("favorites");
-
+        
         const favBookList = JSON.parse(cookie);
-        favBookList.pop(book);
 
-        Cookie.set("favorites", JSON.stringify(book));
+        for (let i = 0; i < favBookList.length; i++) {
+            if (favBookList[i].id === book.id) {
+                favBookList.splice(i, 1);
+                break;
+            }
+        }
+
+        Cookie.set("favorites", JSON.stringify(favBookList));
         setFavoritesBook(favBookList);
     }
 
     function isBookInFavoriteList(bookID: string): boolean {
         let inFavorite: boolean = false;
+
+        console.log("ID do livro: ", bookID);
 
         for (let i = 0; i < favoritesBook.length; i++) {
             if (favoritesBook[i].id === bookID) {
