@@ -1,22 +1,31 @@
 import React from 'react'
 import styles from "./styles.module.scss";
 
-import { Heart } from "react-bootstrap-icons";
+import { 
+    Bookmark,
+    BookmarkCheckFill
+} from "react-bootstrap-icons";
 
 interface Props {
+    text?: string;
     primaryAction: () => void;
+    secondaryAction?: () => void;
+    cancelButton?: boolean;
 }
 
 export function Button({
     primaryAction,
+    secondaryAction = () => {},
+    cancelButton = false,
 }: Props) {
     return (
         <div className={styles.buttonContainer}>
-            <button onClick={primaryAction} className="primaryButton">
+            <button onClick={primaryAction} className={`${ cancelButton ? "btnCancel" : "btnPrimary" }`}>
                 Ver mais detalhes
             </button>
-            <button className="primaryButton">
-                <Heart size={20} />
+            <button onClick={secondaryAction} className={`${ cancelButton ? "btnCancel" : "btnPrimary" }`}>
+                {cancelButton && <BookmarkCheckFill size={20} />}
+                {!cancelButton && <Bookmark size={20} />}
             </button>
         </div>
     )
