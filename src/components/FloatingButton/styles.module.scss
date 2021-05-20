@@ -1,0 +1,32 @@
+.floatingButton {
+    position: fixed;
+    bottom: 5.3rem;
+
+
+    padding: 1.5rem;
+
+    border: 0;
+    right: 30px;
+    border-radius: 100%;
+    color: var(--text);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.floatingButtonAdd {
+    @extend .floatingButton;
+    background: var(--primary);
+}
+
+.floatingButtonRemove {
+    @extend .floatingButton;
+    background: var(--primary-dark);
+}
+
+@media (min-width: 992px) {
+    .floatingButton {
+        display: none;
+    }
+}
