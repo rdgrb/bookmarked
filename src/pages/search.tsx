@@ -48,7 +48,7 @@ export default function Search({
 
             <div className={styles.bookListContainer}>
                 {books.map(book => (
-                    <BookCard
+                    <BookCard redirectDirectly={window.innerWidth < 992 ? true : false}
                         key={book.id}
                         id={book.id}
                         title={book.title}
@@ -59,15 +59,17 @@ export default function Search({
                 ))}
             </div>
 
-            <Pagination searchString={searchString} page={parseInt(page)} pageCount={pageCount} />
+            <Pagination 
+                searchString={searchString} 
+                page={parseInt(page)} 
+                pageCount={pageCount} 
+            />
         </MainLayout>
     )
 }
 
 Search.getInitialProps = async(ctx: NextPageContext) => {
     const { q, page }: any = ctx.query;
-
-    console.log("Cálculo do page: ", Math.floor((page * 8) - 8))
 
     const { data } = await api.get("volumes", {
         params: {
