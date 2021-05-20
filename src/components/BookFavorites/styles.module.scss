@@ -2,6 +2,8 @@
     h1 {
         text-transform: uppercase;
         font-weight: 400;
+
+        margin-top: 2rem;
     }
 
     display: flex;
@@ -19,7 +21,8 @@
     display: flex;
     flex-wrap: wrap;
 
-    width: 50%;
+    width: 100%;
+    padding: 1rem;
 
     justify-content: space-evenly;
 }
@@ -27,5 +30,13 @@
 @media (min-width: 992px) {
     .bookFavoritesContainer {
         height: 92vh;
+
+        h1 {
+            margin-top: 1.2rem;
+        }
+    }
+
+    .bookFavoritesList {
+        width: 50%;
     }
 }
