@@ -1,28 +1,31 @@
 import React, { useContext, useEffect } from 'react'
+import { NextPageContext } from 'next';
 
 import { SearchForm } from 'components/SearchForm'
+import { Pagination } from 'components/Pagination';
 import BookCard from 'components/BookCard';
-import { BookContext } from 'src/contexts/BookContext';
 import { MainLayout } from 'src/templates/MainLayout'
 
-import styles from "styles/Search.module.scss";
-
 import { api } from "src/services/api";
-import { NextPageContext } from 'next';
 import { Book } from 'src/models/book';
+import { BookContext } from 'src/contexts/BookContext';
+
+import styles from "styles/Search.module.scss";
 
 interface Props {
     books: Array<Book>;
     page: any;
-    q: string;
+    searchString: string;
     total: number;
+    pageCount: number;
 }
 
 export default function Search({
     books,
     page,
-    q,
+    searchString,
     total,
+    pageCount,
 }: Props) {
     const { setShowCover } = useContext(BookContext);
 
@@ -37,7 +40,7 @@ export default function Search({
                     <SearchForm />
                     <p>
                         Exibindo resultados para 
-                        <span> { q } </span> - <span> { total } </span> 
+                        <span> { searchString } </span> - <span> { total } </span> 
                         livros encontrados
                     </p>
                 </header>
@@ -55,12 +58,16 @@ export default function Search({
                     />
                 ))}
             </div>
+
+            <Pagination searchString={searchString} page={parseInt(page)} pageCount={pageCount} />
         </MainLayout>
     )
 }
 
 Search.getInitialProps = async(ctx: NextPageContext) => {
     const { q, page }: any = ctx.query;
+
+    console.log("Cálculo do page: ", Math.floor((page * 8) - 8))
 
     const { data } = await api.get("volumes", {
         params: {
@@ -70,6 +77,8 @@ Search.getInitialProps = async(ctx: NextPageContext) => {
             langRestrict: "BR"
         }
     });
+
+    const total = data.totalItems;
 
     const books = data.items ? data.items.map(book => {
         return {
@@ -85,7 +94,8 @@ Search.getInitialProps = async(ctx: NextPageContext) => {
     return {
         books: books,
         page: page,
-        q: q,
-        total: data.totalItems,
+        searchString: q,
+        total: total,
+        pageCount: Math.floor(total / 8),
     }
 }

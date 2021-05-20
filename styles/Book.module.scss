@@ -1,5 +1,6 @@
 .bookContainer {
-    padding: 1rem 2.5rem;
+    padding: 1.2rem;
+    margin-bottom: 4rem;
 
     h1 {
         margin-bottom: 0;
@@ -40,17 +41,28 @@
     }
 }
 
+.imageContainer {
+    padding: 1.5rem 0rem;
+
+    display: flex;
+    justify-content: center;
+}
+
 .floatingButton {
     position: fixed;
-    bottom: 30px;
+    bottom: 5.3rem;
 
     background: var(--primary);
-    padding: 1.5rem;
+    padding: 1.4rem;
 
     border: 0;
     right: 30px;
     border-radius: 100%;
     color: var(--text);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media (min-width: 992px) {

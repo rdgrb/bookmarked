@@ -14,4 +14,14 @@
         color: var(--text);
     }
     
+    position: fixed;
+    bottom: 0;
+
+    width: 100%;
+}
+
+@media (min-width: 992px) {
+    .bottomNavContainer {
+        position: relative;
+    }
 }
