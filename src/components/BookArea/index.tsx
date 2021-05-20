@@ -1,51 +1,24 @@
 import React, { useContext, useEffect, useState } from 'react'
-import Router from "next/router";
 
 import { BookImage } from 'components/BookImage';
 import { BookContext } from 'src/contexts/BookContext';
 
 import styles from "./styles.module.scss";
-import { Button } from 'components/Button';
+import { FavoriteButton } from 'components/FavoriteButton';
 
 export default function BookArea() {
     const { 
         showBookCover, 
         selectedBook, 
-        setFavs, 
-        favoritesBook, 
-        bookRetrieved,
-        removeFavoriteBook,
+        isBookInFavoriteList, 
     } = useContext(BookContext);
 
     const [favoriteBook, setFavoriteBook] = useState<boolean>(false);
 
-    function redirectToBookPage() {
-        Router.push(`/book/${ selectedBook.id }`)
-    }
-
-    function addBookToFavorites() {
-        setFavs(selectedBook);
-        setFavoriteBook(true);
-    }
-
-    function removeBookFromFavorites() {
-        removeFavoriteBook(selectedBook);
-        setFavoriteBook(false);
-    }
-
     useEffect(() => {
-        let favorite: boolean = false;
-        if(selectedBook) {
-            for (let i = 0; i < favoritesBook.length; i++) {
-                if (favoritesBook[i].id === selectedBook.id) {
-                    console.log(favoritesBook[i].id, selectedBook.id)
-                    favorite = true;
-                    break;
-                }
-            }
+        if (selectedBook) {
+            setFavoriteBook(isBookInFavoriteList(selectedBook.id));
         }
-
-        setFavoriteBook(favorite);
     }, [selectedBook])
 
     return (
@@ -66,17 +39,10 @@ export default function BookArea() {
                         { selectedBook.description }
                     </p>
 
-                    {favoriteBook ? (
-                        <Button cancelButton
-                            primaryAction={redirectToBookPage}
-                            secondaryAction={removeBookFromFavorites}
-                        />
-                    ) : (
-                        <Button 
-                            primaryAction={redirectToBookPage}
-                            secondaryAction={addBookToFavorites}
-                        />
-                    )}
+                    <FavoriteButton
+                        setFavoriteBookState={setFavoriteBook}
+                        isRemoveButton={favoriteBook}
+                    />
                 </div>
             )}
 
@@ -84,15 +50,11 @@ export default function BookArea() {
                 <div className={styles.bookCoverContainer}>
                     <BookImage uri={selectedBook.cover} />
 
-                    {favoriteBook ? (
-                        <button className="btnCancel" onClick={removeBookFromFavorites}>
-                            Remover dos favoritos
-                        </button>
-                    ) : (
-                        <button className="btnPrimary" onClick={addBookToFavorites}>
-                            Adicionar aos favoritos
-                        </button>
-                    )}
+                    <FavoriteButton 
+                        smallButton
+                        setFavoriteBookState={setFavoriteBook}
+                        isRemoveButton={favoriteBook}
+                    />
                 </div>
             )}
         </div>
