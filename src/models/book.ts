@@ -6,3 +6,10 @@ export interface Book {
     description: string;
     cover: string;
 }
+
+export interface FavoriteBook {
+    id: string;
+    title: string;
+    subtitle: string;
+    cover: string;
+}
