@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 
-import { Book } from "../models/book";
+import { Book, FavoriteBook } from "../models/book";
 
 import Cookie from "js-cookie";
 
@@ -10,11 +10,10 @@ interface BookContextValues {
     showBookCover: boolean;
     setShowCover: (show: boolean) => void;
     favoritesBook: any;
-    setFavs: (book: any) => void;
-    getFavs: () => any;
     bookRetrieved: any;
     addFavoriteBook: (book: any) => void;
     removeFavoriteBook: (book: any) => void;
+    isBookInFavoriteList: (bookID: string) => boolean;
 }
 
 export const BookContext = createContext({} as BookContextValues);
@@ -49,69 +48,42 @@ export function BookProvider({ children }) {
         setShowBookCover(show);
     }
 
-    function addFavoriteBook(book: Book): void {
+    function addFavoriteBook(book: FavoriteBook): void {
         const cookie = Cookie.get("favorites");
-        const smallBookModel = {
-            id: book.id,
-            title: book.title,
-            subtitle: book.subtitle,
-            cover: book.cover,
-        }
 
         let favBookList = [];
         if (cookie === "undefined" || !cookie) {
-            favBookList.push(smallBookModel);
+            favBookList.push(book);
         } else {
             favBookList = JSON.parse(cookie);
-            favBookList.push(smallBookModel);
+            favBookList.push(book);
         }
 
         Cookie.set("favorites", JSON.stringify(favBookList));
         setFavoritesBook(favBookList);
     }
 
-    function removeFavoriteBook(book: Book): void {
+    function removeFavoriteBook(book: FavoriteBook): void {
         const cookie = Cookie.get("favorites");
-        const smallBookModel = {
-            id: book.id,
-            title: book.title,
-            subtitle: book.subtitle,
-            cover: book.cover,
-        }
 
         const favBookList = JSON.parse(cookie);
-        favBookList.pop(smallBookModel);
+        favBookList.pop(book);
 
-        Cookie.set("favorites", JSON.stringify(favBookList));
+        Cookie.set("favorites", JSON.stringify(book));
         setFavoritesBook(favBookList);
     }
 
-    function setFavs(book: Book): void {
-        const favCookie = Cookie.get("favorites");
-        const rawBook = {
-            id: book.id,
-            title: book.title,
-            subtitle: book.subtitle,
-            cover: book.cover,
+    function isBookInFavoriteList(bookID: string): boolean {
+        let inFavorite: boolean = false;
+
+        for (let i = 0; i < favoritesBook.length; i++) {
+            if (favoritesBook[i].id === bookID) {
+                inFavorite = true;
+                break;
+            }
         }
 
-        let favList = [];
-
-        if (favCookie == "undefined" || !favCookie) {
-            favList.push(rawBook);
-        } else {
-            favList = JSON.parse(favCookie);
-            favList.push(rawBook);    
-        }
-
-        Cookie.set("favorites", JSON.stringify(favList));
-        setFavoritesBook(favList);
-    }
-
-    function getFavs() {
-        const favCookie = Cookie.get("favorites");
-
-        return JSON.parse(favCookie);
+        return inFavorite;
     }
 
     return (
@@ -120,12 +92,11 @@ export function BookProvider({ children }) {
             setBook,
             showBookCover,
             setShowCover,
-            setFavs,
-            getFavs,
             favoritesBook,
             bookRetrieved,
             addFavoriteBook,
             removeFavoriteBook,
+            isBookInFavoriteList,
         }}>
             {bookRetrieved && children }
         </BookContext.Provider>
