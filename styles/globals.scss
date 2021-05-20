@@ -1,5 +1,6 @@
 :root {
   --primary: #0074E3;
+  --primary-dark: #16395B;
 
   --gray: #838383;
   --light-gray: #202020;
@@ -29,25 +30,36 @@ body {
 
 button {
   cursor: pointer;
-}
 
-.primaryButton {
   text-transform: uppercase;
   color: var(--text);
 
-  background: var(--primary);
-
   border: 0;
-  border-radius: 5px; 
+  border-radius: 5px;
 
   padding: 1rem 2.5rem;
+}
 
-  transition: filter 0.5s;
+.btnPrimary {
+  background: var(--primary);
+
+  transition: background 0.5s;
 
   &:hover {
-    filter: brightness(0.6)
+    background: var(--primary-dark);
   }
 }
+
+.btnCancel {
+  background: #16395B;
+
+  transition: background 0.5s;
+
+  &:hover {
+    background: #f44336;
+  }
+}
+
 
 ::-webkit-scrollbar {
   width: 0.5rem;
