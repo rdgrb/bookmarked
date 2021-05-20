@@ -10,6 +10,7 @@ import { MainLayout } from 'src/templates/MainLayout';
 
 import styles from "styles/Book.module.scss";
 import { api } from 'src/services/api';
+import { FloatingButton } from 'components/FloatingButton';
 
 interface Book {
     id: string,
@@ -75,9 +76,7 @@ export default function Book({ book }: Props) {
                 </div>
 
                 <div dangerouslySetInnerHTML={{ __html: book.description }} />
-                <button className={styles.floatingButton}>
-                    <Heart size={25} />
-                </button>
+                <FloatingButton />
             </div>
         </MainLayout>
     )
