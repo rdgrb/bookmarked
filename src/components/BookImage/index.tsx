@@ -11,7 +11,7 @@ export function BookImage({ uri }: ImageProps) {
     return (
         <div>
             <Image 
-                src={uri || "https://via.placeholder.com/230x280/202020/202020/?text=IPaddress.net%20C/O%20https://placeholder.com/ "} 
+                src={uri || "/empty-cover.png"} 
                 layout="intrinsic" 
                 width={230}
                 height={280}
