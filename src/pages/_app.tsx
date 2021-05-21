@@ -1,4 +1,5 @@
 import 'styles/globals.scss'
+import SnackbarProvider from "react-simple-snackbar";
 
 import Router from "next/router";
 
@@ -23,8 +24,10 @@ function MyApp({ Component, pageProps }) {
   return (
     <div>
       <BookProvider>
-        <Component {...pageProps} />
-        <BottomNav />
+        <SnackbarProvider>
+          <Component {...pageProps} />
+          <BottomNav />
+        </SnackbarProvider>
       </BookProvider>
     </div>
   )
