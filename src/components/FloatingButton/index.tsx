@@ -9,6 +9,8 @@ import { FavoriteBook } from 'src/models/book';
 
 import styles from "./styles.module.scss";
 
+import { useSnackbar } from "react-simple-snackbar";
+
 export function FloatingButton() {
     const { 
         addFavoriteBook, 
@@ -17,6 +19,14 @@ export function FloatingButton() {
         isBookInFavoriteList
     } = useContext(BookContext);
     const [isRemoveButton, setIsRemoveButton] = useState<boolean>(false);
+    const [openSnackbar, closeSnackbar] = useSnackbar({
+        position: "top-center",
+        style: {
+            backgroundColor: "var(--primary)",
+            color: "var(--text)",
+        },
+        duration: 1000,
+    });
 
     useEffect(() => {
         if (selectedBook) {
@@ -35,9 +45,13 @@ export function FloatingButton() {
         if (isRemoveButton) {
             removeFavoriteBook(favoriteBook);
             setIsRemoveButton(false);
+
+            openSnackbar("Livro removido dos favoritos");
         } else {
             addFavoriteBook(favoriteBook);
             setIsRemoveButton(true);
+
+            openSnackbar("Livro adicionado com sucesso aos favoritos!");
         }
     }
 

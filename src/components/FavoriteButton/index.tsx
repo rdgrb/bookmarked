@@ -10,6 +10,8 @@ import Router from 'next/router';
 import { BookContext } from 'src/contexts/BookContext';
 import { FavoriteBook } from 'src/models/book';
 
+import { useSnackbar } from "react-simple-snackbar";
+
 interface Props {
     setFavoriteBookState: SetStateAction<any>;
     isRemoveButton: boolean;
@@ -26,6 +28,13 @@ export function FavoriteButton({
         removeFavoriteBook,
         selectedBook,
     } = useContext(BookContext);
+    const [openSnackbar, closeSnackbar] = useSnackbar({
+        position: "bottom-left",
+        style: {
+            backgroundColor: "var(--primary)",
+            color: "var(--text)",
+        }
+    });
 
     function redirectToBookPage(): void {
         Router.push(`/book/${ selectedBook.id }`);
@@ -42,9 +51,13 @@ export function FavoriteButton({
         if (isRemoveButton) {
             removeFavoriteBook(favoriteBook);
             setFavoriteBookState(false);
+
+            openSnackbar("Livro removido dos favoritos");
         } else {
             addFavoriteBook(favoriteBook);
             setFavoriteBookState(true);
+
+            openSnackbar("Livro adicionado com sucesso aos favoritos!");
         }
     }
 
