@@ -60,12 +60,14 @@ export default function Search({
                     />
                 ))}
             </div>
-
-            <Pagination 
-                searchString={searchString} 
-                page={parseInt(page)} 
-                pageCount={pageCount} 
-            />
+            
+            <div className={styles.paginationContainer}>
+                <Pagination 
+                    searchString={searchString} 
+                    page={parseInt(page)} 
+                    pageCount={pageCount} 
+                />
+            </div>
         </MainLayout>
     )
 }
