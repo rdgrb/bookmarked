@@ -5,13 +5,15 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from 'next/router'
 
 import { BookImage } from 'components/BookImage';
-import { ArrowLeft, Heart } from 'react-bootstrap-icons';
+import { ArrowLeft } from 'react-bootstrap-icons';
 import { BookContext } from 'src/contexts/BookContext';
 import { MainLayout } from 'src/templates/MainLayout';
+
 
 import styles from "styles/Book.module.scss";
 import { api } from 'src/services/api';
 import { FloatingButton } from 'components/FloatingButton';
+import { formatPublishedDate } from 'src/utils/formatPublishedDate';
 
 interface Book {
     id: string,
@@ -103,7 +105,7 @@ export const getStaticProps: GetStaticProps = async(ctx) => {
         title: data.volumeInfo.title,
         subtitle: data.volumeInfo.subtitle || null,
         authors: data.volumeInfo.authors || null,
-        publishedDate: data.volumeInfo.publishedDate || null,
+        publishedDate: formatPublishedDate(data.volumeInfo.publishedDate) || null,
         description: data.volumeInfo.description || null,
         cover: data.volumeInfo.imageLinks ? data.volumeInfo.imageLinks.thumbnail : null,
         category: data.volumeInfo.categories || null,
