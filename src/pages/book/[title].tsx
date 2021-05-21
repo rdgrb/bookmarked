@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react'
+import Head from "next/head";
 
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from 'next/router'
@@ -42,6 +43,9 @@ export default function Book({ book }: Props) {
 
     return (
         <MainLayout>
+            <Head>
+                <title>{ book.title } - bookmarked</title>
+            </Head>
             <div className={styles.bookContainer}>
                 <ArrowLeft onClick={handleBackClick} size={30} />
 

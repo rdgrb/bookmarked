@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { NextPageContext } from 'next';
+import Head from "next/head";
 
 import { SearchForm } from 'components/SearchForm'
 import { Pagination } from 'components/Pagination';
@@ -35,6 +36,10 @@ export default function Search({
 
     return (
         <MainLayout>
+            <Head>
+                <title>Pesquisando { searchString } - bookmarked</title>
+            </Head>
+
             <div className={styles.searchContainer}>
                 <header>
                     <SearchForm />
