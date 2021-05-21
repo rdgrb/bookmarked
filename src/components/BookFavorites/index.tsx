@@ -23,7 +23,7 @@ export function BookFavorites({ setExpanded }: any) {
                 ))}
             </div>
 
-            {!favoritesBook && (
+            {favoritesBook.length == 0 && (
                 <span>Nenhum livro favorito adicionado</span>
             )}
         </div>
