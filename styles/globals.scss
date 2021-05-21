@@ -1,5 +1,6 @@
 :root {
   --primary: #0074E3;
+  --primary-dark: #16395B;
 
   --gray: #838383;
   --light-gray: #202020;
@@ -17,6 +18,61 @@
   font-family: Rubik, sans-serif;
 }
 
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: var(--background);
+}
+
 button {
   cursor: pointer;
+
+  text-transform: uppercase;
+  color: var(--text);
+
+  border: 0;
+  border-radius: 5px;
+
+  padding: 1rem 2.5rem;
+}
+
+.btnPrimary {
+  background: var(--primary);
+
+  transition: background 0.5s;
+
+  &:hover {
+    background: var(--primary-dark);
+  }
+}
+
+.btnCancel {
+  background: #16395B;
+
+  transition: background 0.5s;
+
+  &:hover {
+    background: #f44336;
+  }
+}
+
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light-gray); 
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--dark-gray); 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray); 
 }

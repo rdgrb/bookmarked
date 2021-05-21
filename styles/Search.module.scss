@@ -1,0 +1,17 @@
+.searchContainer {
+    header {
+        span {
+            color: var(--gray);
+            font-weight: 700;
+
+            text-transform: uppercase;
+        }
+    }
+}
+
+.bookListContainer {
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: space-evenly;
+}

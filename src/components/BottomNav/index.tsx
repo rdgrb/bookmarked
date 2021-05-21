@@ -1,10 +1,25 @@
+import { BookFavorites } from 'components/BookFavorites';
 import React from 'react'
-import Link from "next/link";
+import useCollapse from 'react-collapsed';
+
+import styles from "./styles.module.scss";
 
 export function BottomNav() {
+    const { getCollapseProps, getToggleProps, isExpanded, setExpanded } = useCollapse({
+        duration: 600,
+    });
+
     return (
-        <nav>
-            <Link href="#">Meus favoritos</Link>
+        <nav className={styles.bottomNavContainer}>
+            <button {...getToggleProps()}>
+                { isExpanded ? "Fechar" : "Meus favoritos" }
+            </button>
+
+            <section className={styles.favContainer}
+                {...getCollapseProps()}
+            >
+                <BookFavorites setExpanded={setExpanded} />
+            </section>
         </nav>
     )
 }

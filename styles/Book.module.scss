@@ -1,0 +1,118 @@
+.bookContainer {
+    padding: 1.2rem;
+    margin-bottom: 4rem;
+
+    h1 {
+        margin-bottom: 0;
+    }
+
+    h2 {
+        margin: 0;
+        color: var(--gray);
+        font-weight: normal;
+    }
+
+    p {
+        text-align: justify;
+    }
+    
+    svg {
+        cursor: pointer;
+    }
+}
+
+.bookInfoContainer {
+    display: block;
+    margin: 1.3rem 0rem;
+
+    div {
+        background-color: var(--light-gray);
+        padding: 1.5rem;
+
+        margin-bottom: 0.4rem;
+
+        border-radius: 5px;
+    }
+
+    h3 {
+        margin: 0;
+        color: var(--gray);
+        font-weight: normal;
+    }
+}
+
+.imageContainer {
+    padding: 1.5rem 0rem;
+
+    display: flex;
+    justify-content: center;
+}
+
+.floatingButton {
+    position: fixed;
+    bottom: 5.3rem;
+
+    background: var(--primary);
+    padding: 1.4rem;
+
+    border: 0;
+    right: 30px;
+    border-radius: 100%;
+    color: var(--text);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (min-width: 992px) {
+    .bookContainer {
+        padding: 5rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+
+        h1 {
+            font-size: 2.25rem;
+        }
+
+        h2 {
+            font-size: 1.875rem;
+        }
+    }
+
+    .bookInfoContainer {
+        display: flex;
+
+        div {
+            width: 100%;
+            margin-right: 0.8rem;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            &:last-child {
+                margin-right: 0rem;
+            }
+        }
+
+        h3 {
+            font-size: 1.25rem;
+        }
+
+        span {
+            font-size: 1.125rem;
+        }
+    }
+
+    .imageContainer {
+        display: none;
+    }
+    
+    .floatingButton {
+        display: none;
+    }
+}

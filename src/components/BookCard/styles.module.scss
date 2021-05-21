@@ -1,0 +1,48 @@
+.bookCardContainer {
+    margin: 1rem 0.5rem 2.5rem 0rem;
+    cursor: pointer;
+
+    flex: 0 0 47.7%;
+    min-width: 0;
+
+    h4, h5 {
+        font-weight: 400;
+
+        max-width: 98%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    h4 {
+        margin-bottom: 0;
+        font-size: 0.9rem;
+    }
+
+    h5 {
+        color: var(--gray);
+        margin: 0;
+        font-size: 0.8rem;
+    }
+}
+
+.emptyBookCover {
+    width: 230px;
+    height: 280px;
+
+    background: var(--light-gray);
+    border-radius: 5px;
+}
+
+@media (min-width: 550px) {
+    .bookCardContainer {
+        flex: 0 0 30%;
+    }
+}
+
+@media(min-width: 992px) {
+    .bookCardContainer {
+        flex: 0 0 21%;
+    }
+}
+

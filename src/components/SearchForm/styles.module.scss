@@ -1,0 +1,36 @@
+.formContainer {
+    display: flex;
+    width: 100%;
+
+    input, button {
+        height: 50px;
+        padding: 1rem;
+
+        border: 0;
+        background: var(--light-gray);
+
+        font-weight: 500;
+    }
+
+    input {
+        width: 100%;
+
+        border-radius: 5px 0px 0px 5px;
+
+        color: var(--gray);
+        font-size: 1rem;
+    }
+
+    button {
+        margin-left: 2px;
+        color: var(--text);
+
+        border-radius: 0px 5px 5px 0px;
+
+        transition: filter 0.4s;
+
+        &:hover {
+            filter: brightness(0.2);
+        }
+    }
+}
