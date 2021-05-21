@@ -25,7 +25,7 @@ export function Pagination({ pageCount, searchString, page }: Props) {
             breakLabel="..."
 
             pageCount={pageCount}
-            marginPagesDisplayed={1}
+            marginPagesDisplayed={0}
             pageRangeDisplayed={2}
             onPageChange={handlePageClick}
             pageLinkClassName={styles.pageLink}
