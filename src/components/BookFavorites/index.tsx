@@ -5,7 +5,7 @@ import styles from "./styles.module.scss";
 import { BookContext } from 'src/contexts/BookContext';
 import BookCard from 'components/BookCard';
 
-export function BookFavorites() {
+export function BookFavorites({ setExpanded }: any) {
     const { favoritesBook } = useContext(BookContext);
 
     return (
@@ -18,6 +18,7 @@ export function BookFavorites() {
                         key={book.id}
                         book={book}
                         redirectDirectly
+                        setExpanded={setExpanded}
                     />
                 ))}
             </div>

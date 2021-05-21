@@ -5,7 +5,7 @@ import useCollapse from 'react-collapsed';
 import styles from "./styles.module.scss";
 
 export function BottomNav() {
-    const { getCollapseProps, getToggleProps, isExpanded } = useCollapse({
+    const { getCollapseProps, getToggleProps, isExpanded, setExpanded } = useCollapse({
         duration: 600,
     });
 
@@ -18,7 +18,7 @@ export function BottomNav() {
             <section className={styles.favContainer}
                 {...getCollapseProps()}
             >
-                <BookFavorites />
+                <BookFavorites setExpanded={setExpanded} />
             </section>
         </nav>
     )

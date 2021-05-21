@@ -10,11 +10,13 @@ import Router from 'next/router';
 interface Props {
     book: Book,
     redirectDirectly?: boolean;
+    setExpanded?: any,
 }
 
 export default function BookCard({
     book,
     redirectDirectly = false,
+    setExpanded = () => {},
 }: Props) {
     const { setBook } = useContext(BookContext);
 
@@ -22,6 +24,7 @@ export default function BookCard({
         setBook(book);
 
         redirectDirectly ? Router.push(`/book/${ book.id }`) : undefined;
+        setExpanded(false);
     }
 
     return (
